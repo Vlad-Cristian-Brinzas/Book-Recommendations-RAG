@@ -1,0 +1,18 @@
+# Make a service out of the Dockerfile in /book_api
+services:
+  book_api:
+    build:
+      context: .
+      dockerfile: book_api/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+  book_ui:
+    build:
+      context: .
+      dockerfile: book_ui/Dockerfile
+    ports:
+      - 80:80
+    depends_on:
+      - book_api

@@ -1,0 +1,21 @@
+meta {
+  name: Book Recommendation Basic
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8000/book-recommendation
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "prompt": "Recommend me a horror book."
+  }
+}
+
+settings {
+  encodeUrl: true
+}

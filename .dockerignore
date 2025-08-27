@@ -1,0 +1,11 @@
+# Ignore React build output and dependencies
+dist
+node_modules
+
+# Ignore Python virtual environments and cache
+.venv
+__pycache__
+
+# Ignore log files and environment files
+*.log
+.env
