@@ -1,5 +1,7 @@
 # Use this file to run changes to the database schema or data
 # (You have to run this manually - it's just a temp file of sorts)
+# (Run via `python -m book_api.handy_scripts.update`)
+# (Since VS Code / IDEs might launch you too deep in, and imports will fail)
 from book_api.persistence import get_db_connection
 
 # Update `responses` table to add a boolean `batch` column, default False
