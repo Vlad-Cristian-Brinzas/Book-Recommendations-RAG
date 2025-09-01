@@ -1,99 +1,119 @@
 ## Title: Pride and Prejudice
+# Author: Jane Austen
 A witty romance about manners, marriage, and social standing in Regency England.
 Elizabeth Bennet navigates love and misunderstandings with the proud Mr. Darcy, confronting class and personal prejudice.
 The novel sparkles with irony while challenging social expectations of women and wealth.
 
 ## Title: Moby-Dick
+# Author: Herman Melville
 An epic tale of obsession and revenge as Captain Ahab hunts the elusive white whale, Moby Dick.
 The novel explores fate, nature, and the limits of knowledge through Ishmael’s reflective narration.
 It blends adventure, philosophy, and symbolism in a vast seafaring odyssey.
 
 ## Title: Dracula
+# Author: Bram Stoker
 A chilling gothic novel about Count Dracula’s attempt to move from Transylvania to England.
 Themes include superstition, sexuality, and the clash of science and the supernatural.
 The story introduced the enduring image of the vampire into popular culture.
 
 ## Title: Frankenstein
+# Author: Mary Shelley
 Victor Frankenstein creates life, only to be haunted by his monstrous creation.
 This classic explores ambition, the consequences of scientific discovery, and alienation.
 It raises enduring questions about responsibility and the nature of humanity.
 
 ## Title: The Adventures of Sherlock Holmes
+# Author: Arthur Conan Doyle
 A collection of detective stories featuring Sherlock Holmes and Dr. Watson.
 Each case highlights deductive reasoning, crime-solving, and Victorian London’s mysteries.
 The tales helped shape the modern detective genre and remain timeless puzzles.
 
 ## Title: Alice’s Adventures in Wonderland
+# Author: Lewis Carroll
 A fantastical journey as Alice falls down a rabbit hole into a world of absurdity and logic puzzles.
 The novel plays with language, identity, and imagination.
 It delights readers with whimsical characters and nonsensical adventures.
 
 ## Title: The Picture of Dorian Gray
+# Author: Oscar Wilde
 Dorian Gray’s portrait ages while he remains young, allowing him to pursue a life of decadence.
 Themes include beauty, morality, and the cost of vanity.
 Oscar Wilde crafts a dark meditation on art, desire, and corruption.
 
 ## Title: The Call of the Wild
+# Author: Jack London
 A domestic dog named Buck is thrust into the Alaskan wilderness, discovering his primal instincts.
 Survival, adaptation, and nature’s power are central themes.
 The story captures the raw struggle between civilization and the wild.
 
 ## Title: Jane Eyre
+# Author: Charlotte Brontë
 Jane Eyre’s journey from orphan to independent woman is marked by love, loss, and self-respect.
 The novel explores class, gender, and morality in Victorian England.
 Her resilience and passion make her one of literature’s most enduring heroines.
 
 ## Title: Treasure Island
+# Author: Robert Louis Stevenson
 Young Jim Hawkins sets out on a high-seas adventure in search of buried pirate treasure.
 The book is a tale of coming-of-age, greed, and betrayal.
 Its pirates, maps, and mutiny defined much of the modern pirate mythos.
 
 ## Title: The War of the Worlds
+# Author: H. G. Wells
 Martians invade Victorian England, threatening human civilization with superior technology.
 Themes include survival, imperialism, and the unknown.
 H. G. Wells creates one of the first and most influential alien-invasion stories.
 
 ## Title: The Count of Monte Cristo
+# Author: Alexandre Dumas
 Edmond Dantès is wrongfully imprisoned and seeks revenge against his betrayers after escaping.
 Themes include justice, vengeance, and forgiveness.
 It is a sweeping tale of betrayal, wealth, and redemption across decades.
 
 ## Title: The Time Machine
+# Author: H. G. Wells
 A time traveler explores distant futures, encountering the Eloi and Morlocks.
 The novel contemplates class division, progress, and human destiny.
 Wells fuses adventure with social critique, pioneering science fiction’s reach.
 
 ## Title: Wuthering Heights
+# Author: Emily Brontë
 A dark tale of passion and revenge on the Yorkshire moors between Heathcliff and Catherine.
 Love, obsession, and the supernatural drive the narrative.
 Its intensity and wild setting make it a unique Gothic masterpiece.
 
 ## Title: The Wonderful Wizard of Oz
+# Author: L. Frank Baum
 Dorothy is swept away to Oz, where she seeks the Wizard with friends she meets along the way.
 Themes include self-discovery, courage, and friendship.
 L. Frank Baum’s imaginative world became a cornerstone of children’s fantasy.
 
 ## Title: The Strange Case of Dr. Jekyll and Mr. Hyde
+# Author: Robert Louis Stevenson
 Dr. Jekyll’s experiments split his personality, unleashing the monstrous Mr. Hyde.
 The novella examines duality, repression, and the nature of evil.
 It reflects Victorian anxieties about morality, science, and hidden selves.
 
 ## Title: Twenty Thousand Leagues Under the Sea
+# Author: Jules Verne
 Captain Nemo takes his guests on extraordinary undersea adventures aboard the Nautilus.
 The story explores science, isolation, and the mysteries of the deep.
 Verne’s visionary technology and oceanic wonders captivated generations.
 
 ## Title: Little Women
+# Author: Louisa May Alcott
 Four sisters—Meg, Jo, Beth, and Amy—grow up and navigate love, ambition, and adversity.
 Themes of family, gender roles, and personal growth shine throughout.
 Its warmth and realism continue to resonate with readers of all ages.
 
 ## Title: A Tale of Two Cities
+# Author: Charles Dickens
 Set during the French Revolution, the story contrasts life in London and Paris through love and sacrifice.
 Themes include resurrection, justice, and the power of the crowd.
 Dickens balances personal drama with sweeping historical tragedy.
 
 ## Title: At the Mountains of Madness
+# Author: H. P. Lovecraft
 An Antarctic expedition uncovers ancient ruins and eldritch horrors beyond human understanding.
 Lovecraft’s tale blends cosmic horror, alien civilizations, and the insignificance of humanity.
 It remains a cornerstone of weird fiction and cosmic dread.
