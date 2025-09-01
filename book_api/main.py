@@ -5,10 +5,10 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from pydantic import BaseModel
-from book_api.open_ai_service import get_response_text
 from book_api.persistence import setup_database
 from book_api.chroma_db_setup import setup_chroma_db
 from book_api.chroma_db_setup import ensure_summaries_up_to_date
+from book_api.rag_service import get_book_recommendation
 
 
 class PromptRequest(BaseModel):
@@ -41,5 +41,5 @@ async def health_check():
 
 @app.post("/book-recommendation")
 async def book_recommendation(request: PromptRequest):
-    response_text = get_response_text(request.prompt)
+    response_text = get_book_recommendation(request.prompt)
     return {"response": response_text}

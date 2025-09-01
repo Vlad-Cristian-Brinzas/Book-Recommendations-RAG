@@ -6,7 +6,9 @@ client = OpenAI()
 
 
 def get_response(
-    input_text: str,
+    input: str | List[str],
+    # FIXME: typing on this
+    # It can accept funky stuff like past outputs, making typing awkward
     *,
     instructions: str | None = None,
     tools: List[Any] | None = None,
@@ -20,8 +22,8 @@ def get_response(
     """
     Get a response from the OpenAI API for a given input text.
 
-    :param input_text: The input text to send to the OpenAI API.
-    :type input_text: str
+    :param input: The input text to send to the OpenAI API.
+    :type input: str or list[str]
     :param instructions: Optional instructions for the response.
     :type instructions: str, optional
     :param tools: Optional callable tools to include in the request.
@@ -39,36 +41,57 @@ def get_response(
         response = client.responses.create(
             model=model,
             instructions=instructions if instructions is not None else NOT_GIVEN,
-            input=input_text,
+            input=input,
             tools=tools if tools is not None else NOT_GIVEN,
             max_output_tokens=max_output_tokens,
         )
         record_response(
             instructions=instructions,
-            input=input_text,
+            input=input,
             openai_response=response
         )
         return response
     except Exception as e:
         # Return a mocked response for development if OpenAI API fails
+        print(f"OpenAI API call failed: {e}, returning mock response.")
+
         class MockResponse:
-            def __init__(self, text):
+            def __init__(self, text, tool_call=False):
+                # Mock output text
                 self.output_text = text
+                # Mock output structure
+                if tool_call:
+                    self.output = [{
+                        "type": "function_call",
+                        'name': 'get_books_by_themes',
+                        'arguments': {
+                            "themes": ["fantasy", "adventure"],
+                            "n_results": 4
+                        }
+                    }]
+
         return MockResponse(
             "[MOCKED RESPONSE]"
             f"\nCould not reach OpenAI: {e}."
-            f"\nInput was: {input_text}"
+            f"\nInput was: {input}",
+            tool_call=tools is not None  # Mock tool call if tools given
         )
 
 
 def get_response_text(
-    input_text, *, max_output_tokens=500, model="gpt-4.1-nano"
+    input,
+    *,
+    instructions=None,
+    max_output_tokens=500,
+    model="gpt-4.1-nano"
 ):
     """
     Get a response text from the OpenAI API for a given input text.
 
-    :param input_text: The input text to send to the OpenAI API.
-    :type input_text: str
+    :param input: The input text to send to the OpenAI API.
+    :type input: str or list[str]
+    :param instructions: Optional instructions for the response.
+    :type instructions: str, optional
     :param max_output_tokens: The maximum number of output tokens.
     :type max_output_tokens: int, optional
     :param model: The model to use for the response.
@@ -78,7 +101,7 @@ def get_response_text(
     :rtype: str
     """
     response = get_response(
-        input_text,
+        input,
         max_output_tokens=max_output_tokens,
         model=model
     )
