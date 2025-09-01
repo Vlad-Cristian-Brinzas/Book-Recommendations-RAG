@@ -1,3 +1,4 @@
+from typing import List
 from openai import OpenAI
 from book_api.response_monitor import record_response
 
@@ -83,6 +84,11 @@ def get_embedding(texts):
             model="text-embedding-3-small",
             input=texts
         )
+        record_response(
+            instructions=None,
+            input=str(texts),
+            openai_response=response
+        )
         return response
     except Exception:
         # Return a mocked embedding for development if OpenAI API fails
@@ -92,7 +98,7 @@ def get_embedding(texts):
         return MockEmbedding([0.0] * 1536)  # Example: 1536-dim zero vector
 
 
-def get_embedding_vector(texts):
+def get_embedding_vector(texts: List[str]) -> List[List[float]]:
     """
     Get an embedding vector for the text using OpenAI's text-embedding-3-small
     model.
@@ -103,4 +109,5 @@ def get_embedding_vector(texts):
     :rtype: list
     """
     response = get_embedding(texts)
-    return [entry.embedding for entry in response.data]
+    return [entry.embedding for entry in response.data]  # type: ignore
+    # TODO: Type is fine, I swear! Figure why VS Code disagrees

@@ -63,6 +63,10 @@ def record_response(instructions, input, openai_response, *, batch=False):
     response_data = get_response_stats(openai_response)
     response_data["instructions"] = instructions
     response_data["input"] = input
-    response_data["output"] = openai_response.output_text
+    response_data["output"] = (
+        openai_response.output_text
+        if hasattr(openai_response, 'output_text')
+        else "[EMBEDDING RESPONSE]"  # No output text for embeddings
+    )
     persist_response(response_data)
     print("[INFO] Response recorded in the database.")
