@@ -1,11 +1,25 @@
-from os import getenv
 from chromadb import HttpClient
 from chromadb.api.types import EmbeddingFunction, Embeddable, Metadata
 from book_api.open_ai_service import get_embedding_vector
+from book_api.chroma_db_config import (
+    CHROMA_HOST,
+    CHROMA_PORT,
+    CHROMA_COLLECTION_NAME,
+)
 
 
 _client = None  # Must setup first
 _collection = None
+
+
+def get_chroma_collection():
+    """Get the ChromaDB collection (after setup)."""
+    if _collection is None:
+        raise ValueError(
+            "ChromaDB collection not set up."
+            " Call setup_chroma_db() first."
+        )
+    return _collection
 
 
 def get_id_for_title_author(title, author):
@@ -40,21 +54,15 @@ def parse_summaries_txt():
 
 def ensure_summaries_up_to_date():
     """Ensure that the summaries are loaded into the ChromaDB collection."""
-    global _client, _collection
-
     # Step 0: Ensure setup has been done
-    if _client is None or _collection is None:
-        raise ValueError(
-            "ChromaDB client or collection not set up."
-            " Call setup_chroma_db() first."
-        )
+    collection = get_chroma_collection()
 
     # Note: currently we're only checking that there ARE summaries in there
     # A more complete solution would also check whether these are up-to-date
     # (e.g. that they haven't been updated in summaries.txt), and if not
     # update only the changed ones.
     # Step 1: Check if there are already summaries in the collection
-    existing_count = _collection.count()
+    existing_count = collection.count()
     if existing_count > 0:
         print(
             "ChromaDB collection already has"
@@ -78,7 +86,7 @@ def ensure_summaries_up_to_date():
     ]
     documents = [summary for _, _, summary in summaries]
 
-    _collection.add(
+    collection.add(
         ids=ids,
         metadatas=metadatas,
         documents=documents
@@ -91,13 +99,9 @@ def setup_chroma_db():
 
     # Set up the ChromaDB persistent client
     if _client is None:
-        # get CHROMA_HOST, else throw error if not set
-        chroma_host = getenv("CHROMA_HOST")
-        if chroma_host is None:
+        if CHROMA_HOST is None:
             raise ValueError("CHROMA_HOST environment variable not set")
-        chroma_port = int(getenv("CHROMA_PORT", "8000"))
-
-        _client = HttpClient(host=chroma_host, port=chroma_port)
+        _client = HttpClient(host=CHROMA_HOST, port=CHROMA_PORT)
 
     # Set up embedding callable
     # (Consider getting a cleverer name)
@@ -107,7 +111,8 @@ def setup_chroma_db():
 
     # Set up a collection (like a table) for book summaries
     _collection = _client.get_or_create_collection(
-        name="book_summaries",
+        name=CHROMA_COLLECTION_NAME,
         metadata={"hnsw:space": "cosine"},
+        # FIXME: What's this metadata above even say?
         embedding_function=MyEmbedder()
     )
