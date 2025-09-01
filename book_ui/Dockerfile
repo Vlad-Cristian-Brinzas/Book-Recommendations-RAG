@@ -14,10 +14,6 @@ RUN npm install
 # Copy rest of the project files and build the app
 COPY book_ui/ .
 
-# Setup API URL environment variable
-ARG VITE_API_URL
-ENV VITE_API_URL=${VITE_API_URL}
-
 # Build the React app
 RUN npm run build
 
