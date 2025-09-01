@@ -1,6 +1,6 @@
 from sqlite3 import connect
 
-DB_PATH = "persistence.db"
+DB_PATH = "book_api/persistence.db"
 
 
 def get_db_connection():
