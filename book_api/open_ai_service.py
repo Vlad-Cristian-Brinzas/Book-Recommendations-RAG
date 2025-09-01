@@ -1,18 +1,31 @@
-from typing import List
-from openai import OpenAI
+from typing import List, Any
+from openai import OpenAI, NOT_GIVEN
 from book_api.response_monitor import record_response
 
 client = OpenAI()
 
 
 def get_response(
-    input_text, *, max_output_tokens=500, model="gpt-4.1-nano"
+    input_text: str,
+    *,
+    instructions: str | None = None,
+    tools: List[Any] | None = None,
+    # 'Any' is a bit of a hack, but it feels like too much
+    # workaround to get the typing right. (Either Pylance
+    # is upset when calling the API, or it's upset when calling
+    # this function.)
+    max_output_tokens: int = 500,
+    model: str = "gpt-4.1-nano"
 ):  # 500 tokens as sanity limit
     """
     Get a response from the OpenAI API for a given input text.
 
     :param input_text: The input text to send to the OpenAI API.
     :type input_text: str
+    :param instructions: Optional instructions for the response.
+    :type instructions: str, optional
+    :param tools: Optional callable tools to include in the request.
+    :type tools: list, optional
     :param max_output_tokens: The maximum number of output tokens.
     :type max_output_tokens: int, optional
     :param model: The model to use for the response.
@@ -25,11 +38,13 @@ def get_response(
     try:
         response = client.responses.create(
             model=model,
+            instructions=instructions if instructions is not None else NOT_GIVEN,
             input=input_text,
+            tools=tools if tools is not None else NOT_GIVEN,
             max_output_tokens=max_output_tokens,
         )
         record_response(
-            instructions=None,
+            instructions=instructions,
             input=input_text,
             openai_response=response
         )

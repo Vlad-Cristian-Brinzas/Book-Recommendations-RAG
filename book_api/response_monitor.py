@@ -68,5 +68,7 @@ def record_response(instructions, input, openai_response, *, batch=False):
         if hasattr(openai_response, 'output_text')
         else "[EMBEDDING RESPONSE]"  # No output text for embeddings
     )
+    # TODO: we're not logging tool calls here!
+    # (Token usage counts should still be correct, though.)
     persist_response(response_data)
     print("[INFO] Response recorded in the database.")
