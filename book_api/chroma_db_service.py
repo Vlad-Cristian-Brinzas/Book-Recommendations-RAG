@@ -21,7 +21,7 @@ def get_book_by_themes(themes, n_results=3):
     ids = results["ids"][0]
     documents = results["documents"][0]  # type: ignore
     metadatas = results["metadatas"][0]  # type: ignore
-    distances = results["distances"][0]  # type: ignore
+    # distances = results["distances"][0]  # type: ignore
     # Pylance doesn't understand that we explicitly asked for these
 
     books = []
@@ -30,7 +30,7 @@ def get_book_by_themes(themes, n_results=3):
             "title": metadatas[idx].get("title", "Unknown Title"),
             "author": metadatas[idx].get("author", "Unknown Author"),
             "summary": documents[idx],
-            "distance": distances[idx],
+            # "distance": distances[idx],
         })
 
     return books
