@@ -1,3 +1,7 @@
+# Use this file to check that we can get OpenAI responses
+# (You have to run this manually - it's just a temp file of sorts)
+# (Run via `python -m book_api.handy_scripts.api_test`)
+# (Since VS Code / IDEs might launch you too deep in, and imports will fail)
 import re
 from book_api.persistence import get_db_connection
 
