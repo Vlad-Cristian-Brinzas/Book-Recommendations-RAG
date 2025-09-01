@@ -6,6 +6,8 @@ services:
       dockerfile: book_api/Dockerfile
     ports:
       - "8000:8000"
+    volumes:
+      - ./book_api/persistence.db:/app/book_api/persistence.db
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
   book_ui:
