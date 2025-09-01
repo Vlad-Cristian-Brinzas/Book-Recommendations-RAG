@@ -7,6 +7,8 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from book_api.open_ai_service import get_response_text
 from book_api.persistence import setup_database
+from book_api.chroma_db_setup import setup_chroma_db
+from book_api.chroma_db_setup import ensure_summaries_up_to_date
 
 
 class PromptRequest(BaseModel):
@@ -18,6 +20,9 @@ async def lifespan(app: FastAPI):
     # Startup
     # Setup persistence (SQLite DB)
     setup_database()
+    # Setup ChromaDB connection and ensure summaries are loaded
+    setup_chroma_db()
+    ensure_summaries_up_to_date()
 
     yield
 

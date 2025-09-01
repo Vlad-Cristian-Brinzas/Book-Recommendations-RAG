@@ -1,5 +1,11 @@
 # Make a service out of the Dockerfile in /book_api
 services:
+  chroma_db:
+    image: chromadb/chroma
+    expose:
+      - "8000"  # Document Chroma port
+    volumes:
+      - ./book_api/chroma_db:/data/
   book_api:
     build:
       context: .
@@ -9,7 +15,11 @@ services:
     volumes:
       - ./book_api/persistence.db:/app/book_api/persistence.db
     environment:
+      - CHROMA_HOST=chroma_db
+      - CHROMA_PORT=8000
       - OPENAI_API_KEY=${OPENAI_API_KEY}
+    depends_on:
+      - chroma_db
   book_ui:
     build:
       context: .
